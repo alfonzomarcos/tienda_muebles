@@ -1,0 +1,48 @@
+/* ─────────────────────────────────────────────────────────────────
+   AVISO DE COOKIES
+
+   Aparece abajo, no en el medio: una capa que tapa la pantalla entera
+   arruina la primera impresión y hace que la gente acepte sin leer
+   solo para sacársela de encima.
+
+   Las dos opciones tienen el mismo peso visual. Un "rechazar" escondido
+   en gris claro al lado de un "aceptar" negro no es una elección real.
+   ───────────────────────────────────────────────────────────────── */
+
+.ck {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 4000;
+  background: var(--white); border-top: 1px solid var(--line);
+  padding: 1.6rem 3.5rem;
+  display: none; box-shadow: 0 -8px 40px rgba(0,0,0,0.07);
+}
+.ck.open { display: block; animation: ckUp 0.45s cubic-bezier(0.22,1,0.36,1); }
+@keyframes ckUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+
+.ck-inner {
+  max-width: 1300px; margin: 0 auto;
+  display: flex; align-items: center; gap: 2.5rem; flex-wrap: wrap;
+}
+.ck-texto { flex: 1 1 420px; }
+.ck-texto p { font-size: 0.84rem; color: var(--muted); line-height: 1.7; margin: 0; }
+.ck-texto a { color: var(--black); border-bottom: 1px solid var(--line); }
+.ck-texto a:hover { border-color: var(--black); }
+
+.ck-btns { display: flex; gap: 0.8rem; flex: 0 0 auto; }
+.ck-btn {
+  font-family: inherit; cursor: pointer; white-space: nowrap;
+  padding: 0.85rem 1.9rem; font-size: 0.7rem;
+  letter-spacing: 0.16em; text-transform: uppercase; border-radius: 1px;
+  transition: all 0.3s ease;
+}
+.ck-si { background: var(--black); color: var(--white); border: 1px solid var(--black); }
+.ck-si:hover { background: #333; border-color: #333; }
+.ck-no { background: transparent; color: var(--black); border: 1px solid var(--line); }
+.ck-no:hover { border-color: var(--black); }
+.ck-btn:focus-visible { outline: 2px solid var(--black); outline-offset: 3px; }
+
+@media (max-width: 900px) {
+  .ck { padding: 1.3rem 1.5rem; }
+  .ck-inner { gap: 1.2rem; }
+  .ck-btns { width: 100%; }
+  .ck-btn { flex: 1; padding: 0.9rem 1rem; }
+}

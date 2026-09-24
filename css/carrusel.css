@@ -1,0 +1,66 @@
+/* ─────────────────────────────────────────────────────────────────
+   GALERÍA DE PROYECTOS
+
+   Se mueve sola cada 6 segundos, pero se frena cuando el mouse está
+   encima o cuando alguien toca una flecha: nada más molesto que una
+   foto que se va justo cuando la estabas mirando.
+
+   Sin leyendas: la foto se muestra limpia. Lo que describe cada
+   imagen vive en el alt, que es lo que leen Google y los lectores
+   de pantalla.
+   ───────────────────────────────────────────────────────────────── */
+
+.gal { position: relative; margin-top: 3rem; }
+
+.gal-viewport { overflow: hidden; }
+
+.gal-track {
+  display: flex;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.gal-slide { flex: 0 0 100%; position: relative; }
+.gal-slide img {
+  width: 100%; height: 560px; object-fit: cover; display: block;
+}
+
+/* ── Flechas ── */
+.gal-nav {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 48px; height: 48px; border: none; cursor: pointer;
+  background: rgba(255,255,255,0.92); color: var(--black);
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.3s ease, opacity 0.3s ease;
+  z-index: 3;
+}
+.gal-nav:hover { background: var(--white); }
+.gal-nav:focus-visible { outline: 2px solid var(--black); outline-offset: 3px; }
+.gal-prev { left: 1.2rem; }
+.gal-next { right: 1.2rem; }
+.gal-nav svg { width: 18px; height: 18px; }
+
+/* ── Puntos ── */
+.gal-dots { display: flex; gap: 0.5rem; justify-content: center; margin-top: 1.4rem; }
+.gal-dot {
+  width: 7px; height: 7px; border-radius: 50%; border: none; padding: 0;
+  background: var(--line); cursor: pointer; transition: background 0.3s ease;
+}
+.gal-dot.on { background: var(--black); }
+.gal-dot:focus-visible { outline: 2px solid var(--black); outline-offset: 3px; }
+
+@media (max-width: 900px) {
+  .gal-slide img { height: 420px; }
+  .gal-nav { width: 40px; height: 40px; }
+  .gal-prev { left: 0.7rem; }
+  .gal-next { right: 0.7rem; }
+}
+@media (max-width: 560px) {
+  .gal-slide img { height: 320px; }
+}
+
+/* Quien pidió menos movimiento en su sistema no recibe ni la
+   transición ni el avance automático (esto último lo corta el JS). */
+@media (prefers-reduced-motion: reduce) {
+  .gal-track { transition: none; }
+}
