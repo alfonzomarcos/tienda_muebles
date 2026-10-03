@@ -5,6 +5,8 @@ Sitio web de presentación y catálogo para un negocio de **placards, cocinas y 
 
 No es una tienda online: no tiene login, carrito ni pagos. El objetivo es mostrar los productos y que la persona interesada se contacte directamente por **WhatsApp**.
 
+"https://alfonzomarcos.github.io/tienda_muebles/"
+
 ## 🔗 Demo
 
 
